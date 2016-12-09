@@ -37,6 +37,7 @@ public class Main {
         System.out.println(list);
         list.sort(Order.PRICE_COMPARE);
         System.out.println(list);
+        list.sort(Order.CITY_COMPARE);
 
 
 

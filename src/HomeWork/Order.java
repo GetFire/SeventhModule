@@ -16,6 +16,12 @@ public class Order {
             return o2.getPrice()-o1.getPrice();
         }
     };
+    public static final Comparator<User>CITY_COMPARE= new Comparator<User>() {
+        @Override
+        public int compare(User o1, User o2) {
+            return o1.getCity().compareTo(o2.getCity());
+        }
+    };
 
 
 //    @Override
