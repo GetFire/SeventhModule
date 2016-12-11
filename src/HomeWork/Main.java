@@ -1,8 +1,6 @@
 package HomeWork;
 
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-
 import java.util.*;
 
 public class Main {
@@ -32,18 +30,17 @@ public class Main {
         Order or8 = new Order(1008, 150, curUAH, "Средства личной гигиены", "WoomanHealth", us8);
         Order or9 = new Order(1009, 300, curUAH, "Huggies Elite Soft", "ДеткиЮА", us6);
         Order or10 = new Order(1010, 30, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
-        Order or11 = new Order(1010, 40, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
-        Order or12 = new Order(1010, 50, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
-        Order or13 = new Order(1010, 60, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
 
         List<Order> list = new ArrayList<Order>();
-        Collections.addAll(list, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10, or11, or12, or13);
-        System.out.println("Printing list without any sort "+list);
+        List<Order> list2 = new ArrayList<Order>();
+        Collections.addAll(list, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
+        Collections.addAll(list2, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
+        System.out.println("Printing list without any sort " + list);
 
         System.out.println("==============================================================");
 
         list.sort(Order.PRICE_COMPARE);
-        System.out.println("Sort list by Price "+list);
+        System.out.println("Sort list by Price " + list);
         System.out.println();
 
         list.sort(Order.CITY_COPARE.thenComparing(Order.PRICE_COMPARE));
@@ -51,12 +48,47 @@ public class Main {
         System.out.println();
 
         list.sort(Order.PRICE_COMPARE.thenComparing(Order.CITY_COPARE));
-        System.out.println("Sort list3 by PriceANDCity "+ list);
+        System.out.println("Sort list3 by PriceANDCity " + list);
         System.out.println();
 
         list.sort(Order.ITEM_NAME_COMPARE.thenComparing(Order.SHOP_INDETIFICATOR_COMPARE).thenComparing(Order.CITY_COPARE));
-        System.out.println("Sort by ItemANDShopANDCity "+ list);
+        System.out.println("Sort by ItemANDShopANDCity " + list);
         System.out.println();
+
+//        ==============================Удаляем дубликаты==========================================================================
+        Set<Order> set = new HashSet<>(list);
+        list.clear();
+        list.addAll(set);
+        System.out.println("Set without duplicates" + list);
+
+        System.out.println("==============================Less 1500==========================================================================");
+        for (int i = 0; i < list.size(); i++) {
+            int price = list.get(i).getPrice();
+            if (price < 1500) {
+                list.remove(i);
+                i--;
+            }
+        }
+        System.out.println(list);
+
+
+        System.out.println("==============================UAH/USD=========================================================================");
+        List<Order> listUA = new ArrayList<>();
+        List<Order> listUS = new ArrayList<>();
+        for (int i = 0; i < list2.size(); i++) {
+            if (list.get(i).getCurrency()."UAH") {
+                listUA.add(list.get(i));
+                list.remove(i);
+                i--;
+            }
+            if (list.get(i).getCurrency().equals("USD")) {
+                listUS.add(list.get(i));
+                list.remove(i);
+                i--;
+            }
+        }
+        System.out.println("UA "+listUA);
+        System.out.println("US "+ listUS);
 
 
     }
