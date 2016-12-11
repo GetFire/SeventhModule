@@ -2,7 +2,6 @@ package HomeWork;
 
 
 import java.util.Comparator;
-import java.util.Currency;
 
 public class Order {
     private long id;

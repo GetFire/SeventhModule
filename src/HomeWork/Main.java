@@ -5,9 +5,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Currency curUAH = Currency.getInstance("UAH");
-        Currency curUSD = Currency.getInstance("USD");
-        Currency curEUR = Currency.getInstance("EUR");
+        Currency curUAH = Currency.UAH;
+        Currency curUSD = Currency.USD;
+        Currency curEUR = Currency.EUR;
 
         User us1 = new User(111, "Мария", "Польщенко", "Харьков", 1500);
         User us2 = new User(222, "Андрей", "Морозов", "Дублин", 2000);
@@ -33,8 +33,12 @@ public class Main {
 
         List<Order> list = new ArrayList<Order>();
         List<Order> list2 = new ArrayList<Order>();
+        List<Order> list3 = new ArrayList<Order>();
+
         Collections.addAll(list, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
         Collections.addAll(list2, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
+        Collections.addAll(list3, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
+
         System.out.println("Printing list without any sort " + list);
 
         System.out.println("==============================================================");
@@ -76,21 +80,43 @@ public class Main {
         List<Order> listUA = new ArrayList<>();
         List<Order> listUS = new ArrayList<>();
         for (int i = 0; i < list2.size(); i++) {
-            if (list.get(i).getCurrency()."UAH") {
-                listUA.add(list.get(i));
-                list.remove(i);
-                i--;
+            if (list2.get(i).getCurrency().equals(curUAH)) {
+                listUA.add(list2.get(i));
+                list2.remove(i);
+                i = 0;
             }
-            if (list.get(i).getCurrency().equals("USD")) {
-                listUS.add(list.get(i));
-                list.remove(i);
-                i--;
+            if (list2.get(i).getCurrency().equals(curUSD)) {
+                listUS.add(list2.get(i));
+                list2.remove(i);
+                i = 0;
             }
         }
-        System.out.println("UA "+listUA);
-        System.out.println("US "+ listUS);
+        System.out.println("UA " + listUA);
+        System.out.println("US " + listUS);
+        System.out.println(list2);
+
+
+        System.out.println("============================Разделяем на списки=====================================================================");
+        Map<String, Order> cityMap = new HashMap<>();
+        for (int i = 0; i < list3.size(); i++) {
+            String s = list3.get(i).getUser().getCity();
+            for (int j = 0; j < list3.size(); j++) {
+                if (!s.equals(list3.get(j).getUser().getCity())) {
+
+                    cityMap.put(s, list3.get(i));
+                }
+            }
+        }
+        Iterator<Map.Entry<String, Order>> iterator = cityMap.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Order> pair = iterator.next();
+            String key = pair.getKey();
+            Order val = pair.getValue();
+            System.out.println(key+" : "+val);
+        }
 
 
     }
+
 
 }
