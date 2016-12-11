@@ -23,6 +23,18 @@ public class Order {
             return o1.getUser().getCity().compareTo(o2.getUser().getCity());
         }
     };
+    public static final Comparator<Order>ITEM_NAME_COMPARE= new Comparator<Order>() {
+        @Override
+        public int compare(Order o1, Order o2) {
+            return o1.getItemName().compareTo(o2.getItemName());
+        }
+    };
+    public static final Comparator<Order>SHOP_INDETIFICATOR_COMPARE = new Comparator<Order>() {
+        @Override
+        public int compare(Order o1, Order o2) {
+            return o1.getShopIdentificator().compareTo(o2.getShopIdentificator());
+        }
+    };
 
     public Order(long id, int price, Currency currency, String itemName, String shopIdentificator, User user) {
         this.id = id;
@@ -84,7 +96,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "["+price + " : " + user.getCity() + "]";
+        return "["+itemName+" : "+price + " : " + user.getCity() + "]";
     }
 }
 

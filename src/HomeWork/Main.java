@@ -1,6 +1,8 @@
 package HomeWork;
 
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 import java.util.*;
 
 public class Main {
@@ -34,7 +36,6 @@ public class Main {
         Order or12 = new Order(1010, 50, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
         Order or13 = new Order(1010, 60, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
 
-
         List<Order> list = new ArrayList<Order>();
         Collections.addAll(list, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10, or11, or12, or13);
         System.out.println("Printing list without any sort "+list);
@@ -51,6 +52,10 @@ public class Main {
 
         list.sort(Order.PRICE_COMPARE.thenComparing(Order.CITY_COPARE));
         System.out.println("Sort list3 by PriceANDCity "+ list);
+        System.out.println();
+
+        list.sort(Order.ITEM_NAME_COMPARE.thenComparing(Order.SHOP_INDETIFICATOR_COMPARE).thenComparing(Order.CITY_COPARE));
+        System.out.println("Sort by ItemANDShopANDCity "+ list);
         System.out.println();
 
 
