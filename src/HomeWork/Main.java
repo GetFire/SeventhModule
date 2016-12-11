@@ -20,30 +20,38 @@ public class Main {
         User us9 = new User(999, "Татьяна", "Беседовская", "Львов", 4000);
         User us10 = new User(1010, "Лера", "Серветник", "Богодухов", 120);
 
-        Order or1 = new Order(1001,120,curUAH,"Сухарики FINN CRISP","Розетка",us10);
-        Order or2 = new Order(1002,5000,curEUR,"Audi A8","AudiUA",us3);
-        Order or3 = new Order(1003,200,curUSD,"Beats Audio 10Pro100","Dr.Dree",us1);
-        Order or4 = new Order(1004,250,curUAH,"Самые дешевые наушники","Розетка",us2);
-        Order or5 = new Order(1005,120,curUSD,"Aquarium Shark+","AquaLIVE",us4);
-        Order or6 = new Order(1006,67,curUAH,"Хлеб Кулиничи","Онлайн Супермаркет",us5);
-        Order or7 = new Order(1007,3500,curUAH,"Electrolux 5000","Розетка",us9);
-        Order or8 = new Order(1008,150,curUAH,"Средства личной гигиены","WoomanHealth",us8);
-        Order or9 = new Order(1009,300,curUAH,"Huggies Elite Soft","ДеткиЮА",us6);
-        Order or10 = new Order(1010,30,curUAH,"Лоток яиц","Онлайн Супермаркет",us7);
+        Order or1 = new Order(1001, 120, curUAH, "Сухарики FINN CRISP", "Розетка", us10);
+        Order or2 = new Order(1002, 5000, curEUR, "Audi A8", "AudiUA", us3);
+        Order or3 = new Order(1003, 200, curUSD, "Beats Audio 10Pro100", "Dr.Dree", us1);
+        Order or4 = new Order(1004, 250, curUAH, "Самые дешевые наушники", "Розетка", us2);
+        Order or5 = new Order(1005, 120, curUSD, "Aquarium Shark+", "AquaLIVE", us4);
+        Order or6 = new Order(1006, 67, curUAH, "Хлеб Кулиничи", "Онлайн Супермаркет", us5);
+        Order or7 = new Order(1007, 3500, curUAH, "Electrolux 5000", "Розетка", us9);
+        Order or8 = new Order(1008, 150, curUAH, "Средства личной гигиены", "WoomanHealth", us8);
+        Order or9 = new Order(1009, 300, curUAH, "Huggies Elite Soft", "ДеткиЮА", us6);
+        Order or10 = new Order(1010, 30, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
+        Order or11 = new Order(1010, 40, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
+        Order or12 = new Order(1010, 50, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
+        Order or13 = new Order(1010, 60, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
 
 
         List<Order> list = new ArrayList<Order>();
-        Collections.addAll(list,or1,or2,or3,or4,or5,or6,or7,or8,or9,or10);
-        System.out.println(list);
+        Collections.addAll(list, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10, or11, or12, or13);
+        System.out.println("Printing list without any sort "+list);
+
+        System.out.println("==============================================================");
+
         list.sort(Order.PRICE_COMPARE);
-        System.out.println(list);
-        list.sort(Order.CITY_COMPARE);
+        System.out.println("Sort list by Price "+list);
+        System.out.println();
 
+        list.sort(Order.CITY_COPARE.thenComparing(Order.PRICE_COMPARE));
+        System.out.println("Sort list by CityANDPrice " + list);
+        System.out.println();
 
-
-
-
-
+        list.sort(Order.PRICE_COMPARE.thenComparing(Order.CITY_COPARE));
+        System.out.println("Sort list3 by PriceANDCity "+ list);
+        System.out.println();
 
 
     }

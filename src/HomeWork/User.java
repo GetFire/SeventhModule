@@ -1,11 +1,12 @@
 package HomeWork;
 
-public class User {
-    long id;
-    String firstName;
-    String lastName;
-    String city;
-    int balance;
+public class User  {
+    private long id;
+    private String firstName;
+    private String lastName;
+    private String city;
+    private int balance;
+
 
     public User(long id, String firstName, String lastName, String city, int balance) {
         this.id = id;
