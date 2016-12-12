@@ -1,13 +1,14 @@
 package HomeWork;
 
 
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Currency curUAH = Currency.UAH;
         Currency curUSD = Currency.USD;
-        Currency curEUR = Currency.EUR;
+//        Currency curEUR = Currency.EUR;
 
         User us1 = new User(111, "Мария", "Польщенко", "Харьков", 1500);
         User us2 = new User(222, "Андрей", "Морозов", "Дублин", 2000);
@@ -21,7 +22,7 @@ public class Main {
         User us10 = new User(1010, "Лера", "Серветник", "Богодухов", 120);
 
         Order or1 = new Order(1001, 120, curUAH, "Сухарики FINN CRISP", "Розетка", us10);
-        Order or2 = new Order(1002, 5000, curEUR, "Audi A8", "AudiUA", us3);
+        Order or2 = new Order(1002, 5000, curUSD, "Audi A8", "AudiUA", us3);
         Order or3 = new Order(1003, 200, curUSD, "Beats Audio 10Pro100", "Dr.Dree", us1);
         Order or4 = new Order(1004, 250, curUAH, "Самые дешевые наушники", "Розетка", us2);
         Order or5 = new Order(1005, 120, curUSD, "Aquarium Shark+", "AquaLIVE", us4);
@@ -39,7 +40,7 @@ public class Main {
         Collections.addAll(list2, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
         Collections.addAll(list3, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
 
-        System.out.println("Printing list without any sort " + list);
+        System.out.println("List without any sort " + list);
 
         System.out.println("==============================================================");
 
@@ -63,7 +64,7 @@ public class Main {
         Set<Order> set = new HashSet<>(list);
         list.clear();
         list.addAll(set);
-        System.out.println("Set without duplicates" + list);
+        System.out.println("List without duplicates" + list);
 
         System.out.println("==============================Less 1500==========================================================================");
         for (int i = 0; i < list.size(); i++) {
@@ -97,26 +98,25 @@ public class Main {
 
 
         System.out.println("============================Разделяем на списки=====================================================================");
-        Map<String, Order> cityMap = new HashMap<>();
+        Map<String, List<Order>> cityMap = new HashMap<>();
         for (int i = 0; i < list3.size(); i++) {
-            String s = list3.get(i).getUser().getCity();
-            for (int j = 0; j < list3.size(); j++) {
-                if (!s.equals(list3.get(j).getUser().getCity())) {
-
-                    cityMap.put(s, list3.get(i));
-                }
+            String s =list3.get(i).getUser().getCity();
+            if (!s.equals(cityMap.get(s))){
+                cityMap.put(s,new ArrayList<Order>(Arrays.asList(list3.get(i))));
             }
+            if (s.equals(cityMap.get(s))){
+                cityMap.put(s,new ArrayList<Order>(Arrays.asList(list3.get(i))));
+            }
+
+
         }
-        Iterator<Map.Entry<String, Order>> iterator = cityMap.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry<String, Order> pair = iterator.next();
-            String key = pair.getKey();
-            Order val = pair.getValue();
-            System.out.println(key+" : "+val);
+
+        System.out.println("-----------------------------------------------");
+        for (Map.Entry<String, List<Order>> stringListEntry : cityMap.entrySet()) {
+            System.out.println(stringListEntry);
         }
 
 
     }
-
 
 }
