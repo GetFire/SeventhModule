@@ -77,9 +77,13 @@ public class Main {
             System.out.println(stringListEntry);
         }
 
+        System.out.println();
+        System.out.println("Integer");
         Utils.timeMeasureInteger1000();
         Utils.timeMeasureInteger10000();
+
         System.out.println();
+        System.out.println("String");
         Utils.timeMeasureString1000();
         Utils.timeMeasureString10000();
 

@@ -57,86 +57,293 @@ public class Utils {
 
     public static void timeMeasureInteger1000() {
         List<Integer> list = new ArrayList<>();
-        List<Integer> lnkList = new LinkedList<>();
+
         Date startList = new Date();
         for (int i = 0; i < 1000; i++) {
             list.add(i);
         }
         Date finishList = new Date();
-        long resultList = finishList.getTime() - startList.getTime();
-        System.out.println("Заполнение ArrayList на 1000 элементов заняло " + resultList);
+        long addResultArray = finishList.getTime() - startList.getTime();
+
+
+        Date start1Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, 120);
+        }
+        Date finish1Array = new Date();
+        long setResultArray = finish1Array.getTime() - start1Array.getTime();
+
+
+        Date star2Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            int s = list.get(i);
+        }
+        Date finish2Array = new Date();
+        long getResultArray = finish2Array.getTime() - star2Array.getTime();
+
+
+        Date star3Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.remove(i);
+        }
+        Date finish3Array = new Date();
+        long removeResultArray = finish3Array.getTime() - star3Array.getTime();
+
+        System.out.println("Заполнение ArrayList заняло: " + addResultArray + " " + "Set ArrayList заняло: " + setResultArray + " " + "Get ArrayList заняло: " + getResultArray + " " + "Remove ArrayList заняло: " + removeResultArray);
+//       ================================================================================================================================
+        List<Integer> link = new LinkedList<>();
 
         Date startLink = new Date();
         for (int i = 0; i < 1000; i++) {
-            lnkList.add(i);
+            link.add(i);
         }
         Date finishLink = new Date();
-        long resultLink = finishLink.getTime() - startLink.getTime();
-        System.out.println("Заполнение LinkedList на 1000 элементов заняло " + resultLink);
+        long addResultLink = finishLink.getTime() - startLink.getTime();
+
+
+        Date start1Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.set(i, 120);
+        }
+        Date finish1Link = new Date();
+        long setResultLink = finish1Link.getTime() - start1Link.getTime();
+
+
+        Date star2Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            int s = link.get(i);
+        }
+        Date finish2Link = new Date();
+        long getResultLink = finish2Link.getTime() - star2Link.getTime();
+
+
+        Date star3Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.remove(i);
+        }
+        Date finish3Link = new Date();
+        long removeResultLink = finish3Link.getTime() - star3Link.getTime();
+        System.out.println("Заполнение LinkedList заняло: " + addResultLink + " " + "Set LinkedList заняло: " + setResultLink + " " + "Get LinkedList заняло: " + getResultLink + " " + "Remove LinkedList заняло: " + removeResultLink);
+
 
     }
 
     public static void timeMeasureInteger10000() {
         List<Integer> list = new ArrayList<>();
-        List<Integer> lnkList = new LinkedList<>();
+
         Date startList = new Date();
         for (int i = 0; i < 10000; i++) {
             list.add(i);
         }
         Date finishList = new Date();
-        long resultList = finishList.getTime() - startList.getTime();
-        System.out.println("Заполнение ArrayList на 10000 элементов заняло " + resultList);
+        long addResultArray = finishList.getTime() - startList.getTime();
+
+
+        Date start1Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, 120);
+        }
+        Date finish1Array = new Date();
+        long setResultArray = finish1Array.getTime() - start1Array.getTime();
+
+
+        Date star2Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            int s = list.get(i);
+        }
+        Date finish2Array = new Date();
+        long getResultArray = finish2Array.getTime() - star2Array.getTime();
+
+
+        Date star3Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.remove(i);
+        }
+        Date finish3Array = new Date();
+        long removeResultArray = finish3Array.getTime() - star3Array.getTime();
+
+        System.out.println("Заполнение ArrayList заняло: " + addResultArray + " " + "Set ArrayList заняло: " + setResultArray + " " + "Get ArrayList заняло: " + getResultArray + " " + "Remove ArrayList заняло: " + removeResultArray);
+//       ================================================================================================================================
+        List<Integer> link = new LinkedList<>();
 
         Date startLink = new Date();
         for (int i = 0; i < 10000; i++) {
-            lnkList.add(i);
+            link.add(i);
         }
         Date finishLink = new Date();
-        long resultLink = finishLink.getTime() - startLink.getTime();
-        System.out.println("Заполнение LinkedList на 10000 элементов заняло " + resultLink);
+        long addResultLink = finishLink.getTime() - startLink.getTime();
+
+
+        Date start1Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.set(i, 120);
+        }
+        Date finish1Link = new Date();
+        long setResultLink = finish1Link.getTime() - start1Link.getTime();
+
+
+        Date star2Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            int s = link.get(i);
+        }
+        Date finish2Link = new Date();
+        long getResultLink = finish2Link.getTime() - star2Link.getTime();
+
+
+        Date star3Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.remove(i);
+        }
+        Date finish3Link = new Date();
+        long removeResultLink = finish3Link.getTime() - star3Link.getTime();
+        System.out.println("Заполнение LinkedList заняло: " + addResultLink + " " + "Set LinkedList заняло: " + setResultLink + " " + "Get LinkedList заняло: " + getResultLink + " " + "Remove LinkedList заняло: " + removeResultLink);
+
 
     }
 
     public static void timeMeasureString10000() {
         List<String> list = new ArrayList<>();
-        List<String> lnkList = new LinkedList<>();
+
         Date startList = new Date();
         for (int i = 0; i < 10000; i++) {
             list.add("Test" + i);
         }
         Date finishList = new Date();
-        long resultList = finishList.getTime() - startList.getTime();
-        System.out.println("Заполнение ArrayList на 10000 String элементов заняло " + resultList);
+        long addResultArray = finishList.getTime() - startList.getTime();
+
+
+        Date start1Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, "120");
+        }
+        Date finish1Array = new Date();
+        long setResultArray = finish1Array.getTime() - start1Array.getTime();
+
+
+        Date star2Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i);
+        }
+        Date finish2Array = new Date();
+        long getResultArray = finish2Array.getTime() - star2Array.getTime();
+
+
+        Date star3Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.remove(i);
+        }
+        Date finish3Array = new Date();
+        long removeResultArray = finish3Array.getTime() - star3Array.getTime();
+
+        System.out.println("Заполнение ArrayList заняло: " + addResultArray + " " + "Set ArrayList заняло: " + setResultArray + " " + "Get ArrayList заняло: " + getResultArray + " " + "Remove ArrayList заняло: " + removeResultArray);
+//       ================================================================================================================================
+        List<String> link = new LinkedList<>();
 
         Date startLink = new Date();
-
         for (int i = 0; i < 10000; i++) {
-            lnkList.add("Test" + i);
+            link.add("Test" + i);
         }
         Date finishLink = new Date();
-        long resultLink = finishLink.getTime() - startLink.getTime();
-        System.out.println("Заполнение LinkedList на  10000 String элементов заняло " + resultLink);
+        long addResultLink = finishLink.getTime() - startLink.getTime();
+
+
+        Date start1Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.set(i, "120");
+        }
+        Date finish1Link = new Date();
+        long setResultLink = finish1Link.getTime() - start1Link.getTime();
+
+
+        Date star2Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            String s = link.get(i);
+        }
+        Date finish2Link = new Date();
+        long getResultLink = finish2Link.getTime() - star2Link.getTime();
+
+
+        Date star3Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.remove(i);
+        }
+        Date finish3Link = new Date();
+        long removeResultLink = finish3Link.getTime() - star3Link.getTime();
+        System.out.println("Заполнение LinkedList заняло: " + addResultLink + " " + "Set LinkedList заняло: " + setResultLink + " " + "Get LinkedList заняло: " + getResultLink + " " + "Remove LinkedList заняло: " + removeResultLink);
+
 
     }
 
     public static void timeMeasureString1000() {
         List<String> list = new ArrayList<>();
-        List<String> lnkList = new LinkedList<>();
+
         Date startList = new Date();
         for (int i = 0; i < 1000; i++) {
             list.add("Test" + i);
         }
         Date finishList = new Date();
-        long resultList = finishList.getTime() - startList.getTime();
-        System.out.println("Заполнение ArrayList на 1000 String элементов заняло " + resultList);
+        long addResultArray = finishList.getTime() - startList.getTime();
+
+
+        Date start1Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, "120");
+        }
+        Date finish1Array = new Date();
+        long setResultArray = finish1Array.getTime() - start1Array.getTime();
+
+
+        Date star2Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i);
+        }
+        Date finish2Array = new Date();
+        long getResultArray = finish2Array.getTime() - star2Array.getTime();
+
+
+        Date star3Array = new Date();
+        for (int i = 0; i < list.size(); i++) {
+            list.remove(i);
+        }
+        Date finish3Array = new Date();
+        long removeResultArray = finish3Array.getTime() - star3Array.getTime();
+
+        System.out.println("Заполнение ArrayList заняло: " + addResultArray + " " + "Set ArrayList заняло: " + setResultArray + " " + "Get ArrayList заняло: " + getResultArray + " " + "Remove ArrayList заняло: " + removeResultArray);
+//       ================================================================================================================================
+        List<String> link = new LinkedList<>();
 
         Date startLink = new Date();
         for (int i = 0; i < 1000; i++) {
-            lnkList.add("Test" + i);
+            link.add("Test" + i);
         }
         Date finishLink = new Date();
-        long resultLink = finishLink.getTime() - startLink.getTime();
-        System.out.println("Заполнение LinkedList на  1000 String элементов заняло " + resultLink);
+        long addResultLink = finishLink.getTime() - startLink.getTime();
+
+
+        Date start1Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.set(i, "120");
+        }
+        Date finish1Link = new Date();
+        long setResultLink = finish1Link.getTime() - start1Link.getTime();
+
+
+        Date star2Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            String s = link.get(i);
+        }
+        Date finish2Link = new Date();
+        long getResultLink = finish2Link.getTime() - star2Link.getTime();
+
+
+        Date star3Link = new Date();
+        for (int i = 0; i < link.size(); i++) {
+            link.remove(i);
+        }
+        Date finish3Link = new Date();
+        long removeResultLink = finish3Link.getTime() - star3Link.getTime();
+        System.out.println("Заполнение LinkedList заняло: " + addResultLink + " " + "Set LinkedList заняло: " + setResultLink + " " + "Get LinkedList заняло: " + getResultLink + " " + "Remove LinkedList заняло: " + removeResultLink);
+
 
     }
 
