@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Sort by ItemANDShopANDCity " + list);
         System.out.println();
 
-//        ==============================Удаляем дубликаты==========================================================================
+        System.out.println("==============================Удаляем дубликаты==========================================================================");
         Utils.removeDuplicates(list);
         System.out.println("List without duplicates" + list);
 
@@ -76,6 +76,12 @@ public class Main {
         for (Map.Entry<String, List<Order>> stringListEntry : cityMap.entrySet()) {
             System.out.println(stringListEntry);
         }
+
+        Utils.timeMeasureInteger1000();
+        Utils.timeMeasureInteger10000();
+        System.out.println();
+        Utils.timeMeasureString1000();
+        Utils.timeMeasureString10000();
 
 
     }
