@@ -10,25 +10,34 @@ public class Order {
     private String itemName;
     private String shopIdentificator;
     private User user;
-    public static final Comparator<Order> PRICE_COMPARE = new Comparator<Order>() {
+    public static final Comparator<Order> PRICE_COMPARE_DECREASE = new Comparator<Order>() {
         @Override
         public int compare(Order o1, Order o2) {
             return o2.getPrice() - o1.getPrice();
         }
     };
+
+    public static final Comparator<Order> PRICE_COMPARE_INCREASE = new Comparator<Order>() {
+        @Override
+        public int compare(Order o1, Order o2) {
+            return o1.getPrice()-o2.getPrice();
+        }
+    };
+
+
     public static final Comparator<Order> CITY_COPARE = new Comparator<Order>() {
         @Override
         public int compare(Order o1, Order o2) {
             return o1.getUser().getCity().compareTo(o2.getUser().getCity());
         }
     };
-    public static final Comparator<Order>ITEM_NAME_COMPARE= new Comparator<Order>() {
+    public static final Comparator<Order> ITEM_NAME_COMPARE = new Comparator<Order>() {
         @Override
         public int compare(Order o1, Order o2) {
             return o1.getItemName().compareTo(o2.getItemName());
         }
     };
-    public static final Comparator<Order>SHOP_INDETIFICATOR_COMPARE = new Comparator<Order>() {
+    public static final Comparator<Order> SHOP_INDETIFICATOR_COMPARE = new Comparator<Order>() {
         @Override
         public int compare(Order o1, Order o2) {
             return o1.getShopIdentificator().compareTo(o2.getShopIdentificator());
@@ -95,7 +104,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "["+itemName+" : "+price + " : " + user.getCity() + "]";
+        return "[" + itemName + " : " + price + " : " + user.getCity() + "]";
     }
 
     @Override
