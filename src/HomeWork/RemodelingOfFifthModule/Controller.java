@@ -27,7 +27,7 @@ public class Controller  {
         for (int i = 0; i < same1.size(); i++) {
             for (int j = 0; j < same2.size(); j++) {
                 if (same1.get(i).equals(same2.get(j))) {
-                    dataBase.add(i,same1.get(i));
+                    dataBase.add(same1.get(i));
                 }
             }
         }
