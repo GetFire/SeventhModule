@@ -3,8 +3,20 @@ package HomeWork;
 
 import java.util.Comparator;
 
-public class Order {
+public class Order implements Comparable {
     private long id;
+
+    @Override
+    public int compareTo(Object o) {
+        Order a = (Order) o;
+        if (a.equals(this))
+            return 0;
+        if(this.getPrice()-a.getPrice()==0)
+            return this.getShopIdentificator().compareTo(a.getShopIdentificator());
+
+        return this.getPrice()-a.getPrice();
+    }
+
     private int price;
     private Currency currency;
     private String itemName;

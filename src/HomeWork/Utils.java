@@ -1,5 +1,7 @@
 package HomeWork;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 import java.util.*;
 
 public class Utils {
@@ -88,6 +90,37 @@ public class Utils {
 
 
         Collections.addAll(orders, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
+        return orders;
+    }
+
+    public static List<Order> createOrdersWithDuplicates(){
+        Currency curUAH = Currency.UAH;
+        Currency curUSD = Currency.USD;
+
+        User us1 = new User(1010, "Мария", "Польщенко", "Харьков", 1500);
+        User us2 = new User(222, "Андрей", "Морозов", "Дублин", 2000);
+        User us3 = new User(333, "Александр", "Азацкий", "Киев", 15000);
+        User us4 = new User(444, "Аня", "Онищенко", "Москва", 1000);
+        User us5 = new User(555, "Ярослав", "Мащенко", "Днипро", 500);
+        User us6 = new User(666, "Алина", "Жилина", "Одесса", 2250);
+        User us7 = new User(5555, "Кирилл", "Подзегун", "Харьков", 250);
+        User us8 = new User(888, "Алёна", "Шляхова", "Франкфурт", 3200);
+        User us9 = new User(999, "Татьяна", "Беседовская", "Львов", 4000);
+        User us10 = new User(1111, "Лера", "Серветник", "Богодухов", 120);
+
+        List<Order> orders = new ArrayList<>();
+        Order o1 = new Order(1011, 120, curUAH, "Сухарики FINN CRISP", "Розетка", us10);
+        Order o2 = new Order(1012, 5000, curUSD, "Audi A8", "AudiUA", us3);
+        Order o3 = new Order(1013, 200, curUSD, "Beats Audio 10Pro100", "Dr.Dree", us1);
+        Order o4 = new Order(1014, 250, curUAH, "Самые дешевые наушники", "Розетка", us2);
+        Order o5 = new Order(1015, 120, curUSD, "Aquarium Shark+", "AquaLIVE", us4);
+        Order o6 = new Order(1016, 67, curUAH, "Хлеб Кулиничи", "Онлайн Супермаркет", us5);
+        Order o7 = new Order(1017, 3500, curUAH, "Electrolux 5000", "Розетка", us9);
+        Order o8 = new Order(1018, 150, curUAH, "Средства личной гигиены", "WoomanHealth", us8);
+        Order o9 = new Order(1012, 5000, curUSD, "Audi A8", "AudiUA", us3);
+        Order o10 = new Order(1012, 5000, curUSD, "Audi A8", "AudiUA", us3);
+
+        Collections.addAll(orders,o1, o2, o3, o4, o5, o6, o7, o8, o9, o10);
         return orders;
     }
 
@@ -381,6 +414,28 @@ public class Utils {
         System.out.println("Заполнение LinkedList заняло: " + addResultLink + " " + "Set LinkedList заняло: " + setResultLink + " " + "Get LinkedList заняло: " + getResultLink + " " + "Remove LinkedList заняло: " + removeResultLink);
 
 
+    }
+
+    public static boolean checkContains(Set<Order>set,String s){
+        boolean answer = false;
+        for (Order order : set) {
+           if(order.getUser().getLastName().equals(s))
+               answer = true;
+
+        }
+        return answer;
+    }
+
+    public static NavigableSet<Order> deleteUSD(NavigableSet<Order>set){
+
+        Iterator<Order> it = set.iterator();
+        while(it.hasNext()){
+            Order order = it.next();
+            if(order.getCurrency()== Currency.USD)
+                it.remove();
+        }
+
+        return set;
     }
 
 

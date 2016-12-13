@@ -1,6 +1,8 @@
 package HomeWork;
 
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.*;
 
 public class Main {
@@ -24,20 +26,30 @@ public class Main {
 
         list.sort(Order.ITEM_NAME_COMPARE.thenComparing(Order.SHOP_INDETIFICATOR_COMPARE).thenComparing(Order.CITY_COPARE));
         System.out.println("Sort by ItemANDShopANDCity " + list);
+
+
+        System.out.println();
+        System.out.println("============================== Удаляем дубликаты ==========================================================================");
         System.out.println();
 
-        System.out.println("==============================Удаляем дубликаты==========================================================================");
+
         Utils.removeDuplicates(list);
         System.out.println("List without duplicates" + list);
 
-        System.out.println("==============================Less 1500==========================================================================");
+
+        System.out.println();
+        System.out.println("============================== Less 1500 ==========================================================================");
+        System.out.println();
+
         Utils.removeLess(list, 1500);
         System.out.println(list);
 
+        System.out.println();
+        System.out.println("============================ Разделяем на списки =====================================================================");
+        System.out.println();
 
-        System.out.println("============================Разделяем на списки=====================================================================");
 
-        Map<Currency,List<Order>>curr = Utils.splitByCurrency(list2);
+        Map<Currency, List<Order>> curr = Utils.splitByCurrency(list2);
         for (Map.Entry<Currency, List<Order>> currencyListEntry : curr.entrySet()) {
             System.out.println(currencyListEntry);
         }
@@ -47,10 +59,36 @@ public class Main {
         for (Map.Entry<String, List<Order>> stringListEntry : cityMap.entrySet()) {
             System.out.println(stringListEntry);
         }
-
-
-//======================================================================================================
         System.out.println();
+        System.out.println("============================== Работаем с TreeSet =========================================================");
+        System.out.println();
+
+
+        List<Order> listWithDP = Utils.createOrdersWithDuplicates();
+        NavigableSet<Order>set = new TreeSet<>();
+
+        set.addAll(listWithDP);
+        for (Order order : set) {
+            System.out.println(order);
+        }
+        System.out.println();
+
+        System.out.println(Utils.checkContains(set,"Petrov"));
+        System.out.println();
+
+        System.out.println("The Order with largest price is: "+set.last());
+        set = Utils.deleteUSD(set);
+        for (Order order : set) {
+            System.out.println(order);
+        }
+        System.out.println();
+
+
+        System.out.println();
+        System.out.println("============================== Измеряем время =========================================================");
+        System.out.println();
+
+
         System.out.println("Integer");
         Utils.timeMeasureInteger1000();
         Utils.timeMeasureInteger10000();
