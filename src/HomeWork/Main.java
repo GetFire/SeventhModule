@@ -1,7 +1,6 @@
 package HomeWork;
 
 
-
 import java.util.*;
 
 public class Main {
@@ -32,51 +31,25 @@ public class Main {
         System.out.println("List without duplicates" + list);
 
         System.out.println("==============================Less 1500==========================================================================");
-        Utils.removeLess(list,1500);
+        Utils.removeLess(list, 1500);
         System.out.println(list);
 
 
-        System.out.println("==============================UAH/USD=========================================================================");
-        List<Order> listUA = new ArrayList<>();
-        List<Order> listUS = new ArrayList<>();
-        for (int i = 0; i < list2.size(); i++) {
-            Currency uah= Currency.UAH;
-            Currency usd= Currency.USD;
-            if (list2.get(i).getCurrency().equals(uah)) {
-                listUA.add(list2.get(i));
-                list2.remove(i);
-                i = 0;
-            }
-            if (list2.get(i).getCurrency().equals(usd)) {
-                listUS.add(list2.get(i));
-                list2.remove(i);
-                i = 0;
-            }
-        }
-        System.out.println("UA " + listUA);
-        System.out.println("US " + listUS);
-        System.out.println(list2);
-
-
         System.out.println("============================Разделяем на списки=====================================================================");
-        Map<String, List<Order>> cityMap = new HashMap<>();
-        for (int i = 0; i < list3.size(); i++) {
-            String s =list3.get(i).getUser().getCity();
-            if (!s.equals(cityMap.get(s))){
-                cityMap.put(s,new ArrayList<Order>(Arrays.asList(list3.get(i))));
-            }
-            if (s.equals(cityMap.get(s))){
-                cityMap.put(s,new ArrayList<Order>(Arrays.asList(list3.get(i))));
-            }
 
-
+        Map<Currency,List<Order>>curr = Utils.splitByCurrency(list2);
+        for (Map.Entry<Currency, List<Order>> currencyListEntry : curr.entrySet()) {
+            System.out.println(currencyListEntry);
         }
 
         System.out.println("-----------------------------------------------");
+        Map<String, List<Order>> cityMap = Utils.splitByCity(list3);
         for (Map.Entry<String, List<Order>> stringListEntry : cityMap.entrySet()) {
             System.out.println(stringListEntry);
         }
 
+
+//======================================================================================================
         System.out.println();
         System.out.println("Integer");
         Utils.timeMeasureInteger1000();
@@ -91,3 +64,4 @@ public class Main {
     }
 
 }
+

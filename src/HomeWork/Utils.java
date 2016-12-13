@@ -5,6 +5,41 @@ import java.util.*;
 public class Utils {
     private Utils() {
     }
+    public static Map<Currency,List<Order>> splitByCurrency(List<Order>list){
+        Map<Currency,List<Order>> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            Currency curr = list.get(i).getCurrency();
+            if (!map.containsKey(curr)){
+                map.put(curr,new ArrayList<Order>(Arrays.asList(list.get(i))));
+                continue;
+            }
+            if (map.containsKey(curr)){
+                List<Order>tmp = map.get(curr);
+                tmp.add(list.get(i));
+                map.put(curr,tmp);
+            }
+        }
+        return map;
+    }
+
+    public static Map<String,List<Order>> splitByCity(List<Order>list){
+        Map<String,List<Order>> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i).getUser().getCity();
+            if (!map.containsKey(s)) {
+                map.put(s, new ArrayList<Order>(Arrays.asList(list.get(i))));
+                continue;
+            }
+            if (map.containsKey(s)) {
+                List<Order>tmp = map.get(s);
+                tmp.add(list.get(i));
+                map.put(s, tmp);
+            }
+
+
+        }
+        return map;
+    }
 
     public static List<Order> removeDuplicates(List<Order> list) {
         Set<Order> set = new HashSet<>(list);
@@ -50,6 +85,7 @@ public class Utils {
         Order or8 = new Order(1008, 150, curUAH, "Средства личной гигиены", "WoomanHealth", us8);
         Order or9 = new Order(1009, 300, curUAH, "Huggies Elite Soft", "ДеткиЮА", us6);
         Order or10 = new Order(1010, 30, curUAH, "Лоток яиц", "Онлайн Супермаркет", us7);
+
 
         Collections.addAll(orders, or1, or2, or3, or4, or5, or6, or7, or8, or9, or10);
         return orders;
