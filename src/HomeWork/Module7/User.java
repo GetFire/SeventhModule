@@ -1,4 +1,4 @@
-package HomeWork;
+package HomeWork.Module7;
 
 public class User  {
     private long id;
